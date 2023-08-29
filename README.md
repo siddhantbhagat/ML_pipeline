@@ -62,3 +62,13 @@ pip install -r requirements.txt
 ```bash
 python app.py
 ```
+
+## Demonstration
+
+home page
+
+![Screenshot 2023-08-29 154106](https://github.com/siddhantbhagat/ML_pipeline/assets/41586492/1fcffc77-13a2-4994-88ab-b62066460e01)
+
+prediction
+
+![Screenshot 2023-08-29 154302](https://github.com/siddhantbhagat/ML_pipeline/assets/41586492/53b83147-e4ec-40e7-acea-da15fbcf0ce3)
