@@ -1,0 +1,19 @@
+artifact
+logs
+EDA
+prediction
+saved_models
+*.egg-info
+.env
+batch_prediction.py
+data_dump.py
+main.py
+README.md
+train.py
+documents
+artifacts
+test1.html
+dockerfiles
+MatNavi Mechanical properties of low-alloy steels.csv
+steps.txt
+images

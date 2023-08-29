@@ -1,4 +1,3 @@
-# app.py
 from flask import Flask,render_template,request,redirect
 # from flask_cors import CORS,cross_origin
 import pickle
@@ -10,10 +9,6 @@ app = Flask(__name__)
 
 # Load the trained model
 model = pickle.load(open('ExtraTreeRegressor.pkl','rb'))
-
-
-# ' C', ' Si', ' Mn', ' P', ' S', ' Ni', ' Cr', ' Mo',
-# ' Cu', 'V', ' Al', ' N', 'Ceq', 'Nb + Ta', ' Temperature (°C)',
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -53,4 +48,4 @@ def predict_target_variables(input_data):
     return prediction
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,host="0.0.0.0",port=5000)

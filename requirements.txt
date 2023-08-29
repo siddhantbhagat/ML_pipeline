@@ -15,4 +15,5 @@ wincertstore
 PyYAML
 numpy
 scikit-learn
+flask
 # -e .

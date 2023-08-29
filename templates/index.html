@@ -74,7 +74,7 @@
             var CumaxValue = 0.25;
             var VminValue = 0.00;
             var VmaxValue = 0.3;
-            var AlminValue = 0.02;
+            var AlminValue = 0.002;
             var AlmaxValue = 0.05;
             var NiminValue = 0;
             var NimaxValue = 0.6;
@@ -124,7 +124,7 @@
                 alert("V value should be between " + VminValue + " and " + VmaxValue);
                 return false;
             }
-            if (AlValue < AlminValue || AlValue > AlmaxValue) {
+            if (AlValue < AlminValue || AlValue >= AlmaxValue) {
                 alert("Al value should be between " + AlminValue + " and " + AlmaxValue);
                 return false;
             }
@@ -214,7 +214,7 @@
         <br>
 
         <div class="input-group">
-            <label for="Al">Al (allowed range 0.02 to 0.05):</label>
+            <label for="Al">Al (allowed range 0.002 to 0.05):</label>
             <input type="text" name="Al" required>
         </div>
         <div class="input-group">
