@@ -1,13 +1,13 @@
 # Mechanical Properties Prediction
 
 ### Problem Statement
-•	Currently there are no precise theoretical methods to predict mechanical properties of steels.
-•	All the methods available are by backed by statistics and extensive physical testing of the materials.
-•	Since testing each material with different composition is a highly tedious task this project tries to predict the mechanical properties of the alloys.
-•	The dataset had weight percentages of alloying metals (like Aluminum, copper, manganese, nitrogen, nickel, cobalt, carbon, etc) and the temperature (in Celsius) for each test as features and mechanical properties (tensile strength, yield strength, elongation and reduction in area) as output variable.
+•	Currently there are no precise theoretical methods to predict mechanical properties of steels.<br>
+•	All the methods available are by backed by statistics and extensive physical testing of the materials. <br>
+•	Since testing each material with different composition is a highly tedious task this project tries to predict the mechanical properties of the alloys.<br>
+•	The dataset had weight percentages of alloying metals (like Aluminium, copper, manganese, nitrogen, nickel, cobalt, carbon, etc) and the temperature (in Celsius) for each test as features and mechanical properties (tensile strength, yield strength, elongation and reduction in area) as output variable.<br>
 
 ### Solution Proposed 
-In this project we are trying to predict the mechanical propeties of alloy materials according to there composition and temprature using regression algorithms. this will in turn reduce the cost of casting and testing the various alloy materials 
+This project is a perfect candidate for machine learning as there are to established formulas to calculate material properties according to their composition. In this project we are trying to predict the mechanical properties of alloy materials according to their composition and temperature using regression algorithms. this will in turn reduce the cost of casting and testing the various alloy materials 
 
 ## Tech Stack Used
 1. Python 
@@ -30,11 +30,11 @@ Before we run the project, make sure that you are having MongoDB in your local s
 ![training pipeline](https://github.com/siddhantbhagat/ML_pipeline/assets/41586492/1dfaf4f9-ff97-4532-971b-0b63102f75d2)
 
 
-## Project Archietecture
+## Project Architecture
 ![image](https://user-images.githubusercontent.com/57321948/193536768-ae704adc-32d9-4c6c-b234-79c152f756c5.png)
 
 
-## Deployment Archietecture
+## Deployment Architecture
 ![image](https://user-images.githubusercontent.com/57321948/193536973-4530fe7d-5509-4609-bfd2-cd702fc82423.png)
 
 
