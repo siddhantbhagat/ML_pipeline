@@ -1,0 +1,263 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Target Variables Prediction</title>
+    <style>
+        body {
+            text-align: center;
+            background-image: url("/static/Tensile-test.jpg"); /* Background image URL */
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+        }
+        form {
+            display: inline-block;
+            text-align: left;
+            background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent background color to make the form more readable */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        form label, form input {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .input-group {
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .prediction-container {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.8); /* Transparent blue background color */
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+     <script>
+        function validateForm() {
+            // Get input values
+            var CValue = parseFloat(document.forms["inputForm"]["C"].value);
+            var SiValue = parseFloat(document.forms["inputForm"]["Si"].value);
+            var MnValue = parseFloat(document.forms["inputForm"]["Mn"].value);
+            var PValue = parseFloat(document.forms["inputForm"]["P"].value);
+            var SValue = parseFloat(document.forms["inputForm"]["S"].value);
+            var CrValue = parseFloat(document.forms["inputForm"]["Cr"].value);
+            var MoValue = parseFloat(document.forms["inputForm"]["Mo"].value);
+            var CuValue = parseFloat(document.forms["inputForm"]["Cu"].value);
+            var VValue = parseFloat(document.forms["inputForm"]["V"].value);
+            var AlValue = parseFloat(document.forms["inputForm"]["Al"].value);
+            var NValue = parseFloat(document.forms["inputForm"]["N"].value);
+            var CeqValue = parseFloat(document.forms["inputForm"]["Ceq"].value);
+            var NbValue = parseFloat(document.forms["inputForm"]["Nb + Ta"].value);
+            var TemperatureValue = parseFloat(document.forms["inputForm"]["Temperature (°C)"].value);
+            var NiValue = parseFloat(document.forms["inputForm"]["Ni"].value);
+            // Add similar lines for other input fields
+
+            // Define your range limits
+            var CminValue = 0.09;
+            var CmaxValue = 0.35; // Adjust the range as needed
+            var SiminValue = 0.18;
+            var SimaxValue = 0.52;
+            var MnminValue = 0.42;
+            var MnmaxValue = 1.48;
+            var PminValue = 0.006;
+            var PmaxValue = 0.03;
+            var SminValue = 0.003;
+            var SmaxValue = 0.022;
+            var CrminValue = 0.00;
+            var CrmaxValue = 1.31;
+            var MominValue = 0.005;
+            var MomaxValue = 1.35;
+            var CuminValue = 0.00;
+            var CumaxValue = 0.25;
+            var VminValue = 0.00;
+            var VmaxValue = 0.3;
+            var AlminValue = 0.02;
+            var AlmaxValue = 0.05;
+            var NiminValue = 0;
+            var NimaxValue = 0.6;
+            var NminValue = 0.0025;
+            var NmaxValue = 0.015;
+            var NbminValue = 0.00;
+            var NbmaxValue = 0.0017;
+            var CeqminValue = 0.0;
+            var CeqmaxValue = 0.43;
+            var TemperatureminValue = 27;
+            var TemperaturemaxValue = 650;
+
+            // Validate each input
+            if (CValue < CminValue || CValue > CmaxValue) {
+                alert("C value should be between " + CminValue + " and " + CmaxValue);
+                return false;
+            }
+            if (SiValue < SiminValue || SiValue > SimaxValue) {
+                alert("Si value should be between " + SiminValue + " and " + SimaxValue);
+                return false;
+            }
+            if (MnValue < MnminValue || MnValue > MnmaxValue) {
+                alert("Mn value should be between " + MnminValue + " and " + MnmaxValue);
+                return false;
+            }
+            if (PValue < PminValue || PValue > PmaxValue) {
+                alert("P value should be between " + PminValue + " and " + PmaxValue);
+                return false;
+            }
+            if (SValue < SminValue || SValue > SmaxValue) {
+                alert("S value should be between " + SminValue + " and " + SmaxValue);
+                return false;
+            }
+            if (CrValue < CrminValue || CrValue > CrmaxValue) {
+                alert("Cr value should be between " + CrminValue + " and " + CrmaxValue);
+                return false;
+            }
+            if (MoValue < MominValue || MoValue > MomaxValue) {
+                alert("Mo value should be between " + MominValue + " and " + MomaxValue);
+                return false;
+            }
+            if (CuValue < CuminValue || CuValue > CumaxValue) {
+                alert("Cu value should be between " + CuminValue + " and " + CumaxValue);
+                return false;
+            }
+            if (VValue < VminValue || VValue > VmaxValue) {
+                alert("V value should be between " + VminValue + " and " + VmaxValue);
+                return false;
+            }
+            if (AlValue < AlminValue || AlValue > AlmaxValue) {
+                alert("Al value should be between " + AlminValue + " and " + AlmaxValue);
+                return false;
+            }
+            if (NValue < NminValue || NValue > NmaxValue) {
+                alert("N value should be between " + NminValue + " and " + NmaxValue);
+                return false;
+            }
+            if (NiValue < NiminValue || NiValue > NimaxValue) {
+                alert("Ni value should be between " + NiminValue + " and " + NimaxValue);
+                return false;
+            }
+            if (NbValue < NbminValue || NbValue > NbmaxValue) {
+                alert("Nb + Ta value should be between " + NbminValue + " and " + NbmaxValue);
+                return false;
+            }
+            if (CeqValue < CeqminValue || CeqValue > CeqmaxValue) {
+                alert("Ceq value should be between " + CeqminValue + " and " + CeqmaxValue);
+                return false;
+            }
+            if (TemperatureValue < TemperatureminValue || TemperatureValue > TemperaturemaxValue) {
+                alert("Temperature value should be between " + TemperatureminValue + " and " + TemperaturemaxValue);
+                return false;
+            }
+            // Add similar blocks for other input fields
+
+            return true;
+        }
+    </script>
+
+</head>
+<body>
+    <p style="background-image: url('Tensile-test.jpg');"></p>
+    <h1 style="background-color:powderblue;">Enter percentage composition of alloy elements:</h1>
+    <form name="inputForm" action="/" method="post" onsubmit="return validateForm()">
+        <div class="input-group">
+            <label for="C">C (allowed range 0.009 to 0.34):</label>
+            <input type="text" name="C" required>
+        </div>
+        <div class="input-group">
+            <label for="Si">Si (allowed range 0.18 to 0.52):</label>
+            <input type="text" name="Si" required>
+        </div>
+        <br>
+
+        <!-- Add other input fields on separate lines -->
+        <div class="input-group">
+            <label for="Mn">Mn (allowed range 0.42 to 1.48):</label>
+            <input type="text" name="Mn" required>
+        </div>
+        <div class="input-group">
+            <label for="P">P (allowed range 0.006 to 0.034):</label>
+            <input type="text" name="P" required>
+        </div>
+        <br>
+
+        <div class="input-group">
+            <label for="S">S (allowed range 0.003 to 0.022):</label>
+            <input type="text" name="S" required>
+        </div>
+        <div class="input-group">
+            <label for="Ni">Ni (allowed range 0 to 0.06):</label>
+            <input type="text" name="Ni" required>
+        </div>
+        <br>
+
+        <div class="input-group">
+            <label for="Cr">Cr (allowed range 0.005 to 0.34):</label>
+            <input type="text" name="Cr" required>
+        </div>
+        <div class="input-group">
+            <label for="Mo">Mo (allowed range 0 to 1.31):</label>
+            <input type="text" name="Mo" required>
+        </div>
+        <br>
+<!-- 
+        ' C', ' Si', ' Mn', ' P', ' S', ' Ni', ' Cr', ' Mo',
+       ' Cu', 'V', ' Al', ' N', 'Ceq', 'Nb + Ta', ' Temperature (°C)', -->
+
+        <div class="input-group">
+            <label for="Cu">Cu (allowed range 0.00 to 0.25):</label>
+            <input type="text" name="Cu" required>
+        </div>
+        <div class="input-group">
+            <label for="V">V (allowed range 0 to 0.3):</label>
+            <input type="text" name="V" required>
+        </div>
+        <br>
+
+        <div class="input-group">
+            <label for="Al">Al (allowed range 0.02 to 0.05):</label>
+            <input type="text" name="Al" required>
+        </div>
+        <div class="input-group">
+            <label for="N">N (allowed range 0.0025 to 0.015):</label>
+            <input type="text" name="N" required>
+        </div>
+        <br>
+
+        <div class="input-group">
+            <label for="Ceq">Ceq (allowed range 0.00 to 0.43):</label>
+            <input type="text" name="Ceq" required>
+        </div>
+        <div class="input-group">
+            <label for="Nb + Ta">Nb + Ta (allowed range 0 to 0.0017):</label>
+            <input type="text" name="Nb + Ta" required>
+        </div>
+        <br>
+
+        <!-- <div class="input-group">
+            <label for="Al">Al:</label>
+            <input type="text" name="Al" required>
+        </div> -->
+        <div class="input-group">
+            <label for="Temperature (°C)">Temperature (°C) (allowed range 27 to 650):</label>
+            <input type="text" name="Temperature (°C)" required>
+        </div>
+        <br>
+
+        <!-- Add other input fields on separate lines -->
+
+        <input type="submit" value="Predict">
+    </form>
+    <br>
+    <br>
+    <br>
+    {% if prediction %}
+    <div class="prediction-container">
+        <h2>Predicted Target Variables:</h2>
+        <p><strong>Elongation: {{ prediction.elongation }}</strong></p>
+        <p><strong>Tensile Strength: {{ prediction.tensile_strength }}</strong></p>
+        <p><strong>Reduction in Area: {{ prediction.reduction_in_area }}</strong></p>
+        <p><strong>Proof Stress: {{ prediction.proof_stress }}</strong></p>
+    </div>
+    {% endif %}
+</body>
+</html>

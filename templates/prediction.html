@@ -1,0 +1,55 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Target Variables Prediction</title>
+    <style>
+        body {
+            text-align: center;
+            background-image: url("/static/Tensile-test.jpg"); /* Background image URL */
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+        }
+        form {
+            display: inline-block;
+            text-align: left;
+            background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent background color to make the form more readable */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        form label, form input {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .input-group {
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .prediction-container {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.8); /* Transparent blue background color */
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <p style="background-image: url('Tensile-test.jpg');"></p>
+    <h1 style="background-color:powderblue;">Resulting Alloy Properties:</h1>
+    <br>
+    <br>
+    {% if prediction %}
+    <div class="prediction-container">
+        <h2>Predicted Target Variables:</h2>
+        <p><strong>Elongation: {{ prediction.elongation }}</strong></p>
+        <p><strong>Tensile Strength: {{ prediction.tensile_strength }}</strong></p>
+        <p><strong>Reduction in Area: {{ prediction.reduction_in_area }}</strong></p>
+        <p><strong>Proof Stress: {{ prediction.proof_stress }}</strong></p>
+    </div>
+    {% endif %}
+</body>
+</html>
