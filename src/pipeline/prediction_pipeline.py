@@ -28,15 +28,14 @@ def start_batch_prediction(input_file_path):
         logging.info(f"Loading model to make prediction")
         model = load_object(file_path=model_resolver.get_latest_model_path())
         prediction = model.predict(input_arr)
-        prediction = prediction.reshape(-1,1)
+        # prediction = prediction.reshape(-1,1)
         logging.info(f"Target encoder to convert predicted column")
         target_transformer = load_object(file_path=model_resolver.get_latest_target_transformer_path())
 
         APP_prediction = target_transformer.inverse_transform(prediction)
 
-        df["prediction"]=prediction
-        df["APP_prediction"]=APP_prediction
-
+        APP_prediction = pd.DataFrame(APP_prediction, columns= ["App_prediction0", "App_prediction1", "App_prediction2", "App_prediction3"])
+        df = pd.concat([df,APP_prediction],axis=1)
 
         prediction_file_name = os.path.basename(input_file_path).replace(".csv",f"{datetime.now().strftime('%m%d%Y__%H%M%S')}.csv")
         prediction_file_path = os.path.join(PREDICTION_DIR,prediction_file_name)

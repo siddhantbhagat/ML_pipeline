@@ -1,14 +1,15 @@
 from flask import Flask,render_template,request,redirect
-# from flask_cors import CORS,cross_origin
+from flask_cors import CORS,cross_origin
 import pickle
 import pandas as pd
 import numpy as np
 
 app = Flask(__name__)
-# cors=CORS(app)
+cors=CORS(app)
 
-# Load the trained model
-model = pickle.load(open('ExtraTreeRegressor.pkl','rb'))
+model = pickle.load(open(r'saved_models\0\model\model.pkl','rb'))
+transformer = pickle.load(open(r'saved_models\0\transformer\transformer.pkl','rb'))
+target_transformer = pickle.load(open(r'saved_models\0\target_transformer\target_transformer.pkl','rb'))
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -26,17 +27,19 @@ def index():
                       float(request.form['Al']),
                       float(request.form['N']),
                       float(request.form['Ceq']),
-                      float(request.form['Nb + Ta']),]
+                      float(request.form['Nb + Ta']),
+                      float(request.form['Temperature (°C)'])]
         
-        # Perform prediction using the loaded model
         prediction = predict_target_variables(input_data)
 
         return render_template('prediction.html', prediction=prediction)
     return render_template('index.html', prediction=None)
 
 def predict_target_variables(input_data):
-    input_data = np.array(input_data).reshape(1, -1)
-    predicted_values = model.predict(input_data)[0]
+    input_data = np.array(transformer.transform([input_data])).reshape(1, -1)
+    predicted = model.predict(input_data)[0]
+    predicted = np.array(predicted).reshape(1, -1)
+    predicted_values = target_transformer.inverse_transform(predicted)[0]
 
     prediction = {
         'elongation': predicted_values[0],
