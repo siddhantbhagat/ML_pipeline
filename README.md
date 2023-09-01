@@ -24,7 +24,7 @@ This project is a perfect candidate for machine learning as there are to establi
 4. Git Actions
 
 ## How to run?
-Before we run the project, make sure that you are having MongoDB in your local system, with Compass since we are using MongoDB for data storage. You also need AWS account to access the service like S3, ECR and EC2 instances.
+you can run the flask application, but won't be able to run the pipeline as I have not provided My mongoDB access. The architechture and steps to run the flask application are as follows.
 
 ## Training pipeline
 ![training pipeline](https://github.com/siddhantbhagat/ML_pipeline/assets/41586492/1dfaf4f9-ff97-4532-971b-0b63102f75d2)
