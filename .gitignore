@@ -1,11 +1,9 @@
 artifact
 logs
-prediction
 *.egg-info
 .env
 batch_prediction.py
 data_dump.py
-main.py
 train.py
 test.py
 artifacts
